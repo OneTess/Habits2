@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -53,17 +54,17 @@ fun NavigationBarView() {
         ) {
             // TODO: Create a custom NavigationBarItem so that you won't have to specify as many parameters for each item.
 
-            // Icon Profile
+            // Icon Home
             NavigationBarItem(
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "Profile",
+                        imageVector = Icons.Filled.Home,
+                        contentDescription = "Home",
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(30.dp)
                     )
                 },
-                label = { Text(text = "Profile") },
+                label = { Text(text = "Home") },
                 selected = false,
                 onClick = { /*TODO*/ },
                 alwaysShowLabel = false
@@ -85,6 +86,22 @@ fun NavigationBarView() {
                 alwaysShowLabel = false
             )
 
+            // Icon Add
+            NavigationBarItem(
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(30.dp)
+                    )
+                },
+                label = { Text(text = "Add") },
+                selected = false,
+                onClick = { /*TODO*/ },
+                alwaysShowLabel = false
+            )
+
             // Icon List
             NavigationBarItem(
                 icon = {
@@ -101,17 +118,17 @@ fun NavigationBarView() {
                 alwaysShowLabel = false
             )
 
-            // Icon Add
+            // Icon Profile
             NavigationBarItem(
                 icon = {
                     Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add",
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "Profile",
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(30.dp)
                     )
                 },
-                label = { Text(text = "Add") },
+                label = { Text(text = "Profile") },
                 selected = false,
                 onClick = { /*TODO*/ },
                 alwaysShowLabel = false
