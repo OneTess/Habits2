@@ -23,11 +23,10 @@ fun HomeView(
         modifier = Modifier
             .padding(Consts.paddingMedium)
             .fillMaxHeight(),
-        containerColor = MaterialTheme.colorScheme.primary,
         bottomBar = {
             NavigationBarView()
         }
     ) {
-        paddingValues -> 
+        paddingValues ->
     }
 }
