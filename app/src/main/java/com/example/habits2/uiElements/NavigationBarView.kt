@@ -44,8 +44,7 @@ fun NavigationBarView() {
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier
-            .wrapContentWidth()
-            .height(72.dp)
+            .wrapContentSize()
             .clip(RoundedCornerShape(100)),
     ) {
         Row(
@@ -61,7 +60,7 @@ fun NavigationBarView() {
                         imageVector = Icons.Filled.Home,
                         contentDescription = "Home",
                         tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(30.dp)
+                        modifier = Modifier.size(Consts.iconSizeMedium)
                     )
                 },
                 label = { Text(text = "Home") },

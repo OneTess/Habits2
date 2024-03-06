@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.habits2.data.HabitViewModel
+import com.example.habits2.data.MainViewModel
 import com.example.habits2.ui.theme.Habits2Theme
 import com.example.habitsmatter.Navigation
 
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Navigation(viewModel = HabitViewModel())
+                    Navigation(viewModel = MainViewModel())
                 }
             }
         }

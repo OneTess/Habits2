@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.habits2.data.HabitViewModel
+import com.example.habits2.data.MainViewModel
 import com.example.habits2.screens.Destinations.EDIT_SCREEN
 import com.example.habits2.screens.Destinations.HOME_SCREEN
 import com.example.habits2.screens.EditView
@@ -15,7 +16,7 @@ import com.example.habits2.screens.HomeView
 
 @Composable
 fun Navigation(
-    viewModel: HabitViewModel,
+    viewModel: MainViewModel,
     navController: NavHostController = rememberNavController()
 ) {
     NavHost(

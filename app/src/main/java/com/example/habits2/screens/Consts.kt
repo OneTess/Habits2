@@ -27,4 +27,8 @@ object Consts {
     val fabSizeMedium = 80.dp
 
     val fabIconSizeMedium = 25.dp
+
+    val barHeightMedium = 56.dp
+
+    val iconSizeMedium = 30.dp
 }

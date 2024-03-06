@@ -15,7 +15,9 @@ fun ProfileView() {
             .padding(Consts.paddingMedium)
             .fillMaxHeight(),
         bottomBar = {
-            NavigationBarView()
+            Column {
+                NavigationBarView()
+            }
         }
     ) {
         paddingValues ->
