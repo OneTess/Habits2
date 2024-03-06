@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import com.example.habits2.data.HabitViewModel
 import com.example.habits2.screens.Destinations.EDIT_SCREEN
 import com.example.habits2.screens.Destinations.HOME_SCREEN
+import com.example.habits2.screens.EditView
 import com.example.habits2.screens.HomeView
 
 @Composable
@@ -28,9 +29,8 @@ fun Navigation(
             )
         }
 
-        /*composable(
-            EDIT_SCREEN + "/{id}",
-            // Enables us to pass a list of id's. In our case it is gonna be a single id.
+        composable(
+            route = "$EDIT_SCREEN/{id}", // Enables us to pass an id for the needed Habit.
             arguments = listOf(
                 navArgument("id") {
                     type = NavType.IntType
@@ -46,6 +46,6 @@ fun Navigation(
                 0
             }
             EditView(id = id, viewModel = viewModel, navController = navController)
-        }*/
+        }
     }
 }
