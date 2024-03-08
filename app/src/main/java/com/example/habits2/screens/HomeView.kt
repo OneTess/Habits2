@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,17 +60,12 @@ fun HomeView(
 
     Scaffold(
         modifier = Modifier
-            .padding(Consts.paddingMedium)
-            .fillMaxHeight(),
+            .fillMaxSize(),
         bottomBar = {
-            Column(
-                modifier = Modifier.padding(Consts.paddingMedium)
-            ) {
-                NavigationBarView()
-            }
+            NavigationBarView()
         },
         topBar = {
-            SearchBar(
+            /*SearchBar(
                 query = searchText,
                 onQueryChange = viewModel::onSearchTextChanged, // Reference the method
                 onSearch = viewModel::onSearchTextChanged,
@@ -81,7 +77,7 @@ fun HomeView(
                     .fillMaxWidth()
             ) {
 
-            }
+            }*/
         }
     ) {
         paddingValues ->
