@@ -47,9 +47,6 @@ fun HomeView(
     navController: NavController,
     viewModel: MainViewModel = MainViewModel(),
 ) {
-    // SearchBar states
-    val searchText by viewModel.searchText.collectAsState()
-    val isSearching by viewModel.isSearching.collectAsState()
 
     // BottomSheet states
     // TODO: Implement proper interaction with those states via ViewModel
