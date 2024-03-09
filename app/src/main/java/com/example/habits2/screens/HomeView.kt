@@ -48,29 +48,18 @@ fun HomeView(
         modifier = Modifier
             .fillMaxSize(),
         bottomBar = {
-            NavigationBarView()
+            NavigationBarView(onShowBottomSheetClicked = {
+                if (!sheetState.isVisible) {
+                    viewModel.onShowBottomSheetChanged()
+                }
+            }
+            )
         },
         topBar = {
             /* TODO: HomeView topBar */
         }
     ) {
         paddingValues ->
-
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Button(onClick = {
-                scope.launch { sheetState.hide() }.invokeOnCompletion {
-                    if (!sheetState.isVisible) {
-                        viewModel.onShowBottomSheetChanged()
-                    }
-                }
-            }) {
-                Text(text = "Show bottom sheet")
-            }
-        }
 
         if (showBottomSheet.value) {
             ModalBottomSheet(

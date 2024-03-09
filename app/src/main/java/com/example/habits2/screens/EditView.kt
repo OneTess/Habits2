@@ -26,7 +26,7 @@ fun EditView(
         containerColor = MaterialTheme.colorScheme.primary,
         bottomBar = {
             Column {
-                NavigationBarView()
+                NavigationBarView(onShowBottomSheetClicked = {})
             }
         }
     ) {

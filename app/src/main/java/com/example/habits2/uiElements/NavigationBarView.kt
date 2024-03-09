@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.dp
 import com.example.habits2.screens.Consts
 
 @Composable
-fun NavigationBarView() {
+fun NavigationBarView(onShowBottomSheetClicked: () -> Unit) {
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surface,
         modifier = Modifier
@@ -151,7 +151,7 @@ fun NavigationBarView() {
             ) {
                 // FAB Add
                 FloatingActionButton(
-                    onClick = { /*TODO*/ },
+                    onClick = { onShowBottomSheetClicked() },
                     modifier = Modifier
                         .fillMaxHeight(),
                     shape = RoundedCornerShape(Consts.roundedCornerPercentageMedium),

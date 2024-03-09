@@ -16,7 +16,7 @@ fun ProfileView() {
             .fillMaxHeight(),
         bottomBar = {
             Column {
-                NavigationBarView()
+                NavigationBarView(onShowBottomSheetClicked = {})
             }
         }
     ) {
