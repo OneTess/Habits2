@@ -11,7 +11,7 @@ object Consts {
     val paddingLarge = 12.dp
     val paddingExtraLarge = 16.dp
 
-    val fontSizeMedium = 18.sp
+    val fontSizeMedium = 14.sp
     val fontSizeMediumPlus = 18.sp
     val fontSizeLarge = 20.sp
     val fontSizeExtraLarge = 28.sp
@@ -25,6 +25,7 @@ object Consts {
     val elevationMedium = 6.dp
 
     val fabSizeMedium = 80.dp
+    val fabSizeLarge = 65.dp
 
     val fabIconSizeMedium = 25.dp
 

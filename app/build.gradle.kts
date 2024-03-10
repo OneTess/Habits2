@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.habits2"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 2
         versionName = "0.0.2"
