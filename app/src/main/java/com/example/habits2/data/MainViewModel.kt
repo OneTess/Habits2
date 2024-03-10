@@ -42,6 +42,10 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         _habitTitleState.value = newString
     }
 
+    fun clearHabitTitle() {
+        _habitTitleState.value = ""
+    }
+
     fun onHabitContentsChanged(newString: String) {
         _habitContentState.value = newString
     }

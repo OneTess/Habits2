@@ -21,6 +21,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.NavigationBarView
@@ -86,8 +87,11 @@ fun HomeView(
 
                     Spacer(modifier = Modifier.padding(Consts.paddingExtraLarge))
 
+                    // Button Save inside of the BottomSheet
                     Button(onClick = {
-                        /* TODO: Save functionality */
+                        viewModel.addHabit(habitData = HabitData(title = title))
+                        viewModel.clearHabitTitle()
+
                         scope.launch { sheetState.hide() }.invokeOnCompletion {
                             if (!sheetState.isVisible) {
                                 viewModel.onShowBottomSheetChanged()
