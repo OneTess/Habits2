@@ -28,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
+import com.example.habits2.uiElements.CalendarWeekCompactView
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.HabitItemView
 import com.example.habits2.uiElements.NavigationBarView
@@ -54,6 +55,7 @@ fun HomeView(
 
     Scaffold(
         modifier = Modifier
+            .padding(top = Consts.paddingGlobalSmall)
             .fillMaxSize(),
         bottomBar = {
             NavigationBarView(
@@ -71,10 +73,12 @@ fun HomeView(
     ) {
         paddingValues ->
 
+        CalendarWeekCompactView()
+
         val habitsList = viewModel.getAllHabits.collectAsState(initial = listOf())
         LazyColumn(
             modifier = Modifier
-                .padding(paddingValues)
+                .padding(top = Consts.paddingGlobalMedium)
                 .fillMaxHeight()
         ) {
             items(items = habitsList.value, key = {habit -> habit.id}) {

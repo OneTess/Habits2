@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -26,17 +28,22 @@ import java.util.Locale
 
 @Composable
 fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
+    // TODO: Customizable colors to accentuate the current day and only leave outlines of other days
 
     val currentDate = getPastOrFutureDate(daysOffset)
 
     val formattedDateDay = getFormattedDate(currentDate, "dd") // Format as day only
     val formattedDateMonth = getFormattedDate(currentDate, "MMM") // Format as first three characters of the month name
 
-    Box(modifier = Modifier.padding(PaddingValues(Consts.paddingSmall))){
+    Box(modifier = Modifier
+        .padding(PaddingValues(Consts.paddingSmall))
+    ){
         OutlinedButton(onClick = { /*TODO*/ },
-            modifier= Modifier.size(Consts.fabSizeLarge),  //avoid the oval shape
-            shape = CircleShape,
-            contentPadding = PaddingValues(0.dp),  //avoid the little icon
+            // modifier= Modifier.size(Consts.fabSizeLarge),  //avoid the oval shape
+            shape = RoundedCornerShape(100),
+            contentPadding = PaddingValues(
+                Consts.paddingLarge
+            ),
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary)
         ) {
             Column(
@@ -45,12 +52,12 @@ fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
             ) {
                 Text(
                     text = formattedDateDay,
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineSmall
                 )
 
                 Text(
                     text = formattedDateMonth.toString().uppercase(Locale.getDefault()),
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodySmall
                 )
             }
         }
