@@ -56,11 +56,13 @@ fun HomeView(
         modifier = Modifier
             .fillMaxSize(),
         bottomBar = {
-            NavigationBarView(onShowBottomSheetClicked = {
-                if (!sheetState.isVisible) {
-                    viewModel.onShowBottomSheetChanged()
+            NavigationBarView(
+                currentScreenName = "home",
+                onNavigationBarButtonClicked = {
+                    if (!sheetState.isVisible) {
+                        viewModel.onShowBottomSheetChanged()
+                    }
                 }
-            }
             )
         },
         topBar = {

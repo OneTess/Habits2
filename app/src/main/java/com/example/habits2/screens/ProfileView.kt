@@ -8,6 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.habits2.uiElements.NavigationBarView
 
+/*
+TODO: Profile View
+
 @Composable
 fun ProfileView() {
     Scaffold(
@@ -27,4 +30,4 @@ fun ProfileView() {
 
         }
     }
-}
+}*/

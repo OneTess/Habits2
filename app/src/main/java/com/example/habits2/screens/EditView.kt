@@ -1,10 +1,7 @@
 package com.example.habits2.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,13 +18,9 @@ fun EditView(
 ) {
     Scaffold(
         modifier = Modifier
-            .padding(Consts.paddingMedium)
-            .fillMaxHeight(),
-        containerColor = MaterialTheme.colorScheme.primary,
+            .fillMaxSize(),
         bottomBar = {
-            Column {
-                NavigationBarView(onShowBottomSheetClicked = {})
-            }
+            NavigationBarView(currentScreenName = "edit", onNavigationBarButtonClicked = {})
         }
     ) {
         paddingValues ->
