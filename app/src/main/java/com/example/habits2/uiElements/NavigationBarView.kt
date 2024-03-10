@@ -59,89 +59,8 @@ fun NavigationBarView(onShowBottomSheetClicked: () -> Unit) {
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            // modifier = Modifier.padding(Consts.paddingMedium)
         ) {
             // TODO: Create a custom NavigationBarItem so that you won't have to specify as many parameters for each item.
-
-            /*// Icon Home
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Home,
-                        contentDescription = "Home",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(Consts.iconSizeMedium)
-                    )
-                },
-                label = { Text(text = "Home") },
-                selected = false,
-                onClick = { *//*TODO*//* },
-                alwaysShowLabel = false
-            )
-
-            // Icon Habits
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.DateRange,
-                        contentDescription = "Habits",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(30.dp)
-                    )
-                },
-                label = { Text(text = "Habits") },
-                selected = false,
-                onClick = { *//*TODO*//* },
-                alwaysShowLabel = false
-            )
-
-            // Icon Reminders
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Check,
-                        contentDescription = "Reminders",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(30.dp)
-                    )
-                },
-                label = { Text(text = "Reminders") },
-                selected = false,
-                onClick = { *//*TODO*//* },
-                alwaysShowLabel = false
-            )
-
-            // Icon Notes
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Filled.Create,
-                        contentDescription = "Notes",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(30.dp)
-                    )
-                },
-                label = { Text(text = "Notes") },
-                selected = false,
-                onClick = { *//*TODO*//* },
-                alwaysShowLabel = false
-            )*/
-
-            /*// Icon Profile
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "Profile",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(30.dp)
-                    )
-                },
-                label = { Text(text = "Profile") },
-                selected = false,
-                onClick = { *//*TODO*//* },
-                alwaysShowLabel = false
-            )*/
 
             Row(
                 modifier = Modifier
@@ -149,6 +68,7 @@ fun NavigationBarView(onShowBottomSheetClicked: () -> Unit) {
                     .padding(vertical = Consts.paddingLarge, horizontal = Consts.paddingExtraLarge),
                 horizontalArrangement = Arrangement.End
             ) {
+
                 // FAB Add
                 FloatingActionButton(
                     onClick = { onShowBottomSheetClicked() },
