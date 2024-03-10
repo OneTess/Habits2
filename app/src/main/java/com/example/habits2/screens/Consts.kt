@@ -12,7 +12,7 @@ object Consts {
     val paddingExtraLarge = 16.dp
 
     val paddingGlobalSmall = 70.dp
-    val paddingGlobalMedium = 80.dp
+    val paddingGlobalMedium = 90.dp
 
     val fontSizeMedium = 14.sp
     val fontSizeMediumPlus = 18.sp

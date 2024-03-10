@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import com.example.habits2.data.MainViewModel
 import com.example.habits2.uiElements.NavigationBarView
 
+// TODO: EditView Autosave
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter") // TODO: Remove this
 @Composable
 fun EditView(

@@ -80,7 +80,7 @@ fun NavigationBarView(
                             contentColor = MaterialTheme.colorScheme.primary
                         )
                     ) {
-                        Text(text = "Mark completed")
+                        Text(text = "Mark completed", style = MaterialTheme.typography.bodyLarge)
                     }
                 }
             }

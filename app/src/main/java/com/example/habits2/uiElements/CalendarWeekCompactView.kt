@@ -12,12 +12,12 @@ import androidx.compose.ui.unit.dp
 import com.example.habits2.screens.Consts
 
 @Composable
-fun CalendarWeekCompactView() {
+fun CalendarWeekCompactView(modifier: Modifier) {
     // TODO: Put this inside the LazyRow, maybe?
 
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center,
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
         CalendarDayCellView(onClick = {  }, daysOffset = -2)
