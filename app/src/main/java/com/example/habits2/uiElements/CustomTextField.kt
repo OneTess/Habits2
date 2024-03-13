@@ -14,12 +14,11 @@ import com.example.habits2.screens.Consts
 @Composable
 fun CustomTextField(
     value: String,
-    onValueChange: (String) -> Unit,
+    onValueChange: (String) -> Unit
 ) {
-    // TODO: Visuals of CustomTextField
+    // TODO: Visuals of TextField
     TextField(
         value = value,
-        onValueChange = onValueChange,
-        modifier = Modifier.padding(Consts.paddingMedium)
+        onValueChange = onValueChange
     )
 }

@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.habits2.R
@@ -61,7 +62,7 @@ fun HomeView(
 
     Scaffold(
         modifier = Modifier
-            .padding(top = Consts.paddingGlobalSmall)
+            .padding(top = Consts.paddingMedium)
             .fillMaxSize(),
         bottomBar = {
             NavigationBarView(
@@ -79,7 +80,15 @@ fun HomeView(
     ) {
         paddingValues ->
 
-        Column {
+        Column(
+            modifier = Modifier
+                .padding(
+                    start = paddingValues.calculateLeftPadding(LayoutDirection.Ltr),
+                    end = paddingValues.calculateRightPadding(LayoutDirection.Rtl),
+                    top = paddingValues.calculateTopPadding(),
+                    bottom = paddingValues.calculateBottomPadding()
+                )
+        ) {
             CalendarWeekCompactView(modifier = Modifier)
 
             Spacer(modifier = Modifier.padding(Consts.paddingLarge))

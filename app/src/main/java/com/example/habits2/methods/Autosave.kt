@@ -16,5 +16,5 @@ fun autosave(
         )
     )*/
 
-    viewModel.debounceAndSaveHabitData()
+    // viewModel.debounceAndSaveHabitData()
 }

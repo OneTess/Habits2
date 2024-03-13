@@ -11,6 +11,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
@@ -33,11 +34,11 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
 
     init {
         getAllHabits = habitRepository.getAllHabits()
-        /*viewModelScope.launch {
+        viewModelScope.launch {
             @OptIn(FlowPreview::class)
             _habitTitleState.debounce(1000).collect()
             _habitContentState.debounce(1000).collect()
-        }*/
+        }
     }
 
     fun onHabitTitleChanged(newString: String) {
