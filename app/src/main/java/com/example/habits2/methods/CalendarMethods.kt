@@ -1,8 +1,8 @@
 package com.example.habits2.methods
 
 import java.text.SimpleDateFormat
-import java.util.*
-import java.time.LocalDate
+import java.util.Calendar
+import java.util.Date
 
 fun getCurrentDate(): Date {
     val calendar = Calendar.getInstance()

@@ -93,7 +93,7 @@ fun HabitItemView(
 @Preview(showBackground = true)
 @Composable
 private fun HabitItemViewPreview() {
-    HabitItemView(habitData = HabitData(title = "testing title", content = "testing content"), onItemClick = { /*TODO*/ }) {
+    HabitItemView(habitData = HabitData(title = "testing title", content = "testing content"), onItemClick = {  }) {
         
     }
 }

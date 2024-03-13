@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavController
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
+import com.example.habits2.methods.autosave
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.NavigationBarView
 
-// TODO: EditView Autosave
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun EditView(
@@ -45,10 +45,13 @@ fun EditView(
 
     Scaffold(
         modifier = Modifier.padding(top = Consts.paddingMedium).fillMaxSize(),
+        topBar = {
+                 /* TODO: Dropdown for buttons such as "Delete" */
+        },
         bottomBar = {
             NavigationBarView(
                 currentScreenName = "edit",
-                onNavigationBarButtonClicked = { /* TODO: Mark completed functionality */ }
+                onNavigationBarButtonClicked = { /* TODO: "Mark completed" functionality */ }
             )
         }
     ) {
@@ -71,7 +74,10 @@ fun EditView(
             // Title Text Field
             CustomTextField(
                 value = title,
-                onValueChange = { viewModel.onHabitTitleChanged(it) }
+                onValueChange = {
+                    viewModel.onHabitTitleChanged(it)
+                    autosave(id = id, viewModel = viewModel)
+                }
             )
         }
     }

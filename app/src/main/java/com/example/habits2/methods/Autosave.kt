@@ -7,14 +7,12 @@ fun autosave(
     id: Int,
     viewModel: MainViewModel,
 ) {
-    /*viewModel.editHabit(
+    viewModel.editHabit(
         HabitData(
             id = id,
             title = viewModel.habitTitleState.value,
             content = viewModel.habitContentState.value,
             progress = viewModel.habitProgressState.value
         )
-    )*/
-
-    // viewModel.debounceAndSaveHabitData()
+    )
 }

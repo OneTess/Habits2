@@ -11,7 +11,6 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
@@ -22,11 +21,15 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
     private val _habitProgressState = MutableStateFlow(0)
     private val _showBottomSheet = MutableStateFlow(false)
 
+    private val _habitDataState = MutableStateFlow(HabitData())
+
     val habitTitleState: StateFlow<String> = _habitTitleState
     val habitContentState: StateFlow<String> = _habitContentState
     val habitTypeState: StateFlow<String> = _habitTypeState
     val habitProgressState: StateFlow<Int> = _habitProgressState
     val showBottomSheet: StateFlow<Boolean> = _showBottomSheet
+
+    val habitDataState: StateFlow<HabitData> = _habitDataState
 
     var idMax by mutableStateOf(0)
 
@@ -34,15 +37,28 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
 
     init {
         getAllHabits = habitRepository.getAllHabits()
+        // TODO: Get rid of all unused methods
         viewModelScope.launch {
             @OptIn(FlowPreview::class)
-            _habitTitleState.debounce(1000).collect()
-            _habitContentState.debounce(1000).collect()
+            _habitDataState.debounce(100).collect(::editHabit)
+        }
+    }
+
+    fun debounceAndSaveHabitData(delayMillis: Long = 500) {
+        viewModelScope.launch {
+            _habitDataState.debounce(delayMillis).collect { habitData ->
+                editHabit(habitData)
+                _habitDataState.value = HabitData() // Reset temporary state
+            }
         }
     }
 
     fun onHabitTitleChanged(newString: String) {
-        _habitTitleState.value = newString
+        viewModelScope.launch {
+            _habitTitleState.value = newString
+            _habitDataState.value = _habitDataState.value.copy(title = _habitTitleState.value)
+            debounceAndSaveHabitData()
+        }
     }
 
     fun clearHabitTitle() {

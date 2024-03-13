@@ -1,6 +1,5 @@
 package com.example.habits2.screens
 
-import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.habits2.R
 import com.example.habits2.data.HabitData
@@ -41,7 +39,6 @@ import com.example.habits2.uiElements.HabitItemView
 import com.example.habits2.uiElements.NavigationBarView
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter") // TODO: Remove this
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeView(
@@ -104,7 +101,6 @@ fun HomeView(
                         habitData = habit,
                         onItemClick = {
                             val id = habit.id
-                            // TODO: Implement EditView
                             navController.navigate(Destinations.EDIT_SCREEN + "/$id")
                         },
                         onButtonClick = {
