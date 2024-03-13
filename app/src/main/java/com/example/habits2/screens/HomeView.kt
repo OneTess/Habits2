@@ -143,8 +143,8 @@ fun HomeView(
                     ) {
                         Button(
                             onClick = {
-                            viewModel.addHabit(habitData = HabitData(title = title))
-                            viewModel.clearHabitTitle()
+                                viewModel.clearHabitTitle()
+                                viewModel.addHabit(habitData = HabitData(title = title))
 
                             scope.launch { sheetState.hide() }.invokeOnCompletion {
                                 if (!sheetState.isVisible) {

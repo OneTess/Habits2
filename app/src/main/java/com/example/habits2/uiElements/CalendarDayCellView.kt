@@ -39,10 +39,11 @@ fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
         .padding(PaddingValues(Consts.paddingSmall))
     ){
         OutlinedButton(onClick = { /*TODO*/ },
-            // modifier= Modifier.size(Consts.fabSizeLarge),  //avoid the oval shape
+            // modifier= Modifier.size(Consts.fabSizeLarge),  // Avoid the oval shape
             shape = RoundedCornerShape(100),
             contentPadding = PaddingValues(
-                Consts.paddingLarge
+                top = Consts.paddingLarge,
+                bottom = 18.dp
             ),
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary)
         ) {
