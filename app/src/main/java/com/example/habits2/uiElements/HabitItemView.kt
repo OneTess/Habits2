@@ -12,10 +12,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -32,15 +35,26 @@ fun HabitItemView(
     onItemClick: () -> Unit,
     onButtonClick: () -> Unit,
 ) {
+    var checkedState = remember { mutableStateOf(false) }
+
+    // Main Row
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = Consts.paddingMedium)
-            .clickable { onItemClick() }
+            .clickable { onItemClick() },
+        verticalAlignment = Alignment.Top
     ) {
-        // TODO: Checkbox or a small circular progress indicator on the left
+        // TODO: Implement proper progress indicator dependent on the Habit type
+        // Checkbox
+        Checkbox(checked = checkedState.value, onCheckedChange = { checkedState.value = it })
+
+        // Contents Column
         Column(
-            modifier = Modifier.padding(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(4f)
+                .padding(
                 top = Consts.paddingLarge,
                 bottom = Consts.paddingLarge,
                 start = Consts.paddingExtraLarge,
@@ -49,7 +63,6 @@ fun HabitItemView(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center
         ) {
-
             // Title text field
             Text(
                 text = habitData.title,
@@ -68,24 +81,18 @@ fun HabitItemView(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+        }
 
-            Row(
-                modifier = Modifier
-                    .heightIn(max = 28.dp)
-                    .fillMaxWidth()
-                    .padding(bottom = Consts.paddingSmall),
-                horizontalArrangement = Arrangement.End
-            ) {
-                IconButton(
-                    onClick = { onButtonClick() }
-                ) {
-                    Icon(
-                        modifier = Modifier.size(24.dp),
-                        imageVector = Icons.Outlined.Star,
-                        contentDescription = "Star this Habit"
-                    )
-                }
-            }
+        // Star Button
+        IconButton(
+            modifier = Modifier.weight(1f),
+            onClick = { onButtonClick() }
+        ) {
+            Icon(
+                modifier = Modifier.size(28.dp),
+                imageVector = Icons.Outlined.Star,
+                contentDescription = "Star this Habit"
+            )
         }
     }
 }
