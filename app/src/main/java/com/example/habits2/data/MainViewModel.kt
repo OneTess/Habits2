@@ -44,6 +44,15 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         }
     }
 
+    fun onHabitBinaryProgressChanged() {
+        if (_habitProgressState.value == 0) {
+            _habitProgressState.value = 1
+        } else {
+            _habitProgressState.value = 0
+        }
+        // editHabit(HabitData(progress = _habitProgressState.value))
+    }
+
     fun debounceAndSaveHabitData(delayMillis: Long = 500) {
         viewModelScope.launch {
             _habitDataState.debounce(delayMillis).collect { habitData ->
@@ -54,11 +63,7 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
     }
 
     fun onHabitTitleChanged(newString: String) {
-        viewModelScope.launch {
-            _habitTitleState.value = newString
-            _habitDataState.value = _habitDataState.value.copy(title = _habitTitleState.value)
-            debounceAndSaveHabitData()
-        }
+        _habitTitleState.value = newString
     }
 
     fun clearHabitTitle() {

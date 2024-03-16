@@ -65,6 +65,7 @@ fun HomeView(
             NavigationBarView(
                 currentScreenName = "home",
                 onNavigationBarButtonClicked = {
+                    viewModel.clearHabitTitle()
                     if (!sheetState.isVisible) {
                         viewModel.onShowBottomSheetChanged()
                     }
@@ -99,6 +100,8 @@ fun HomeView(
 
                     HabitItemView(
                         habitData = habit,
+                        id = habit.id, // TODO: Maybe checkbox erasing all the data is somehow connected to this?
+                        viewModel = viewModel,
                         onItemClick = {
                             val id = habit.id
                             navController.navigate(Destinations.EDIT_SCREEN + "/$id")
