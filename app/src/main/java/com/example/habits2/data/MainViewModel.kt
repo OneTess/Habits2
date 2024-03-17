@@ -44,11 +44,11 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         }*/
     }
 
-    fun onHabitBinaryProgressChanged() {
-        if (_habitProgressState.value == 0) {
-            _habitProgressState.value = 1
+    fun onHabitBinaryProgressChanged(progress: Int): Int {
+        if (progress == 0) {
+            return 1
         } else {
-            _habitProgressState.value = 0
+            return 0
         }
         // updateHabitTitle(HabitData(progress = _habitProgressState.value))
     }

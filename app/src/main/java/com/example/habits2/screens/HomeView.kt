@@ -110,7 +110,8 @@ fun HomeView(
                             // TODO: Functionality of the Button to the right. For now I think it
                             //  should be something like starring or pinning the Habit.
                             Toast.makeText(context, "Button clicked", Toast.LENGTH_SHORT).show()
-                        }
+                        },
+                        onCheckboxClick = {}
                     )
                 }
             }

@@ -37,6 +37,7 @@ fun HabitItemView(
     viewModel: MainViewModel,
     onItemClick: () -> Unit,
     onButtonClick: () -> Unit,
+    onCheckboxClick: () -> Unit
 ) {
     var checkedState = remember { mutableStateOf(false) }
     var testingCheckboxValue = viewModel.habitProgressState.value.toString()
@@ -54,18 +55,19 @@ fun HabitItemView(
         Checkbox(
             checked = checkedState.value,
             onCheckedChange = {
+                var progress = habitData.progress
                 checkedState.value = it
-                viewModel.onHabitBinaryProgressChanged()
-                // TODO: Implement proper logic for changing the progress value, not via state of
-                //  the viewModel, but through the properly implemented method of the viewModel.
-                autosaveProgress(id = id, progress = viewModel.habitProgressState.value, viewModel = viewModel)
+                // TODO: Is it acceptable to do it that way? I feel like there is something off
+                //  with the way I am changing progress in the db. It works though, so I'll leave
+                //  it for the time being.
+                autosaveProgress(id = id, progress = viewModel.onHabitBinaryProgressChanged(progress), viewModel = viewModel)
             }
         )
 
         // Testing checkbox behaviour
-        Text(text = "progress: ${ viewModel.habitProgressState.value.toString() }")
+        Text(text = "Progress: ${ habitData.progress }")
         Spacer(modifier = Modifier.padding(4.dp))
-        Text(text = "id: $id")
+        Text(text = "ID: $id")
 
         // Contents Column
         Column(
@@ -118,7 +120,13 @@ fun HabitItemView(
 @Preview(showBackground = true)
 @Composable
 private fun HabitItemViewPreview() {
-    HabitItemView(habitData = HabitData(title = "testing title", content = "testing content"), id = 1, viewModel = MainViewModel(), onItemClick = {  }) {
+    HabitItemView(
+        habitData = HabitData(title = "testing title", content = "testing content"),
+        id = 1,
+        viewModel = MainViewModel(),
+        onItemClick = { },
+        onButtonClick = { }
+    ) {
         
     }
 }
