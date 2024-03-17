@@ -61,6 +61,7 @@ fun NavigationBarView(
                         containerColor = MaterialTheme.colorScheme.primary,
                         elevation = FloatingActionButtonDefaults.elevation(Consts.elevationMedium) // This property doesn't seem to change anything
                     ) {
+                        // TODO: More subtle coloring of the Add FAB
                         Icon(
                             imageVector = Icons.Default.Add,
                             contentDescription = "Add Habit",

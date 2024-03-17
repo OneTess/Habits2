@@ -29,6 +29,7 @@ import java.util.Locale
 @Composable
 fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
     // TODO: Customizable colors to accentuate the current day and only leave outlines of other days
+    // TODO: More subtle coloring of Calendar Cells
 
     val currentDate = getPastOrFutureDate(daysOffset)
 
