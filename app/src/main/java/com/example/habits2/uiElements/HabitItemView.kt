@@ -26,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
-import com.example.habits2.methods.autosaveAll
 import com.example.habits2.methods.autosaveProgress
 import com.example.habits2.screens.Consts
 
@@ -57,7 +56,9 @@ fun HabitItemView(
             onCheckedChange = {
                 checkedState.value = it
                 viewModel.onHabitBinaryProgressChanged()
-                autosaveProgress(id = id, viewModel = viewModel)
+                // TODO: Implement proper logic for changing the progress value, not via state of
+                //  the viewModel, but through the properly implemented method of the viewModel.
+                autosaveProgress(id = id, progress = viewModel.habitProgressState.value, viewModel = viewModel)
             }
         )
 

@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavController
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
-import com.example.habits2.methods.autosaveAll
+import com.example.habits2.methods.autosaveTitle
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.NavigationBarView
 
@@ -76,7 +76,7 @@ fun EditView(
                 value = title,
                 onValueChange = {
                     viewModel.onHabitTitleChanged(it)
-                    autosaveAll(id = id, viewModel = viewModel) // TODO: Implement autosaveAll using debounce.
+                    autosaveTitle(id = id, title = it, viewModel = viewModel) // TODO: Implement autosaveTitle using debounce.
                 }
             )
         }

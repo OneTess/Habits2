@@ -3,27 +3,18 @@ package com.example.habits2.methods
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
 
-fun autosaveAll(
+fun autosaveTitle(
     id: Int,
+    title: String,
     viewModel: MainViewModel,
 ) {
-    viewModel.editHabit(
-        HabitData(
-            id = id,
-            title = viewModel.habitTitleState.value,
-            content = viewModel.habitContentState.value,
-        )
-    )
+    viewModel.updateHabitTitle(id, title)
 }
 
 fun autosaveProgress(
     id: Int,
+    progress: Int,
     viewModel: MainViewModel
 ) {
-    viewModel.editHabit(
-        HabitData(
-            id = id,
-            progress = viewModel.habitProgressState.value
-        )
-    )
+    viewModel.updateHabitProgress(id, progress)
 }

@@ -38,10 +38,10 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
     init {
         getAllHabits = habitRepository.getAllHabits()
         // TODO: Get rid of all unused methods
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             @OptIn(FlowPreview::class)
-            _habitDataState.debounce(100).collect(::editHabit)
-        }
+            _habitDataState.debounce(100).collect(::updateHabitTitle)
+        }*/
     }
 
     fun onHabitBinaryProgressChanged() {
@@ -50,17 +50,17 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         } else {
             _habitProgressState.value = 0
         }
-        // editHabit(HabitData(progress = _habitProgressState.value))
+        // updateHabitTitle(HabitData(progress = _habitProgressState.value))
     }
 
-    fun debounceAndSaveHabitData(delayMillis: Long = 500) {
+    /*fun debounceAndSaveHabitData(delayMillis: Long = 500) {
         viewModelScope.launch {
             _habitDataState.debounce(delayMillis).collect { habitData ->
-                editHabit(habitData)
+                updateHabitTitle(id, title)
                 _habitDataState.value = HabitData() // Reset temporary state
             }
         }
-    }
+    }*/
 
     fun onHabitTitleChanged(newString: String) {
         _habitTitleState.value = newString
@@ -92,9 +92,15 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         }
     }
 
-    fun editHabit(habit: HabitData) {
+    fun updateHabitTitle(id: Int, title: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            habitRepository.updateHabit(habit)
+            habitRepository.updateHabitTitle(id, title)
+        }
+    }
+
+    fun updateHabitProgress(id: Int, progress: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            habitRepository.updateHabitProgress(id, progress)
         }
     }
 

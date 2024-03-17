@@ -11,8 +11,12 @@ class HabitRepository(private val habitDao: HabitDao) {
         return habitDao.delete(noteData)
     }
 
-    suspend fun updateHabit(noteData: HabitData) {
-        return habitDao.update(noteData)
+    suspend fun updateHabitTitle(id: Int, title: String) {
+        return habitDao.updateTitle(title, id)
+    }
+
+    suspend fun updateHabitProgress(id: Int, progress: Int) {
+        return habitDao.updateProgress(progress, id)
     }
 
     fun getHabit(id: Int) : Flow<HabitData> {
