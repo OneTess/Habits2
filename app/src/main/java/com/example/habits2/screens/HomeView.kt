@@ -100,7 +100,7 @@ fun HomeView(
 
                     HabitItemView(
                         habitData = habit,
-                        id = habit.id, // TODO: Maybe checkbox erasing all the data is somehow connected to this?
+                        id = habit.id,
                         viewModel = viewModel,
                         onItemClick = {
                             val id = habit.id

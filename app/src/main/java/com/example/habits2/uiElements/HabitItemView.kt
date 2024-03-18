@@ -53,7 +53,7 @@ fun HabitItemView(
         // TODO: Implement proper progress indicator dependent on the Habit type
         // Checkbox
         Checkbox(
-            checked = checkedState.value,
+            checked = checkedState.value, // TODO: Bind the checkedState to the actual db value.
             onCheckedChange = {
                 var progress = habitData.progress
                 checkedState.value = it

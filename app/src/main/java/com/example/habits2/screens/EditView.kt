@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavController
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
+import com.example.habits2.methods.autosaveProgress
 import com.example.habits2.methods.autosaveTitle
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.NavigationBarView
@@ -51,7 +52,9 @@ fun EditView(
         bottomBar = {
             NavigationBarView(
                 currentScreenName = "edit",
-                onNavigationBarButtonClicked = { /* TODO: "Mark completed" functionality */ }
+                onNavigationBarButtonClicked = {
+                    autosaveProgress(id = id, progress = viewModel.onHabitBinaryProgressChanged(0), viewModel = viewModel)
+                }
             )
         }
     ) {
