@@ -18,3 +18,11 @@ fun autosaveProgress(
 ) {
     viewModel.updateHabitProgress(id, progress)
 }
+
+fun autosaveStatus(
+    id: Int,
+    habitData: HabitData,
+    viewModel: MainViewModel
+) {
+    viewModel.updateHabitStatus(id, habitData)
+}

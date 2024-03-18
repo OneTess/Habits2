@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.habits2.Graph
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRepository) : ViewModel() {
@@ -37,11 +35,6 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
 
     init {
         getAllHabits = habitRepository.getAllHabits()
-        // TODO: Get rid of all unused methods
-        /*viewModelScope.launch {
-            @OptIn(FlowPreview::class)
-            _habitDataState.debounce(100).collect(::updateHabitTitle)
-        }*/
     }
 
     fun onHabitBinaryProgressChanged(progress: Int): Int {
@@ -50,17 +43,7 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
         } else {
             return 0
         }
-        // updateHabitTitle(HabitData(progress = _habitProgressState.value))
     }
-
-    /*fun debounceAndSaveHabitData(delayMillis: Long = 500) {
-        viewModelScope.launch {
-            _habitDataState.debounce(delayMillis).collect { habitData ->
-                updateHabitTitle(id, title)
-                _habitDataState.value = HabitData() // Reset temporary state
-            }
-        }
-    }*/
 
     fun onHabitTitleChanged(newString: String) {
         _habitTitleState.value = newString
@@ -89,6 +72,21 @@ class MainViewModel(private val habitRepository: HabitRepository = Graph.habitRe
     fun addHabit(habitData: HabitData) {
         viewModelScope.launch(Dispatchers.IO) {
             idMax = habitRepository.insertHabit(habitData)
+        }
+    }
+
+    private fun determineHabitStatus(habit: HabitData): Boolean {
+        if (habit.progress >= habit.goal) { // TODO: Add some more conditions
+            return true
+        } else {
+            return false
+        }
+    }
+
+    fun updateHabitStatus(id: Int, habit: HabitData) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val status = !determineHabitStatus(habit) // TODO: This does completely the opposite of what I expect it to do. And this ! workaround only works for binary Habits.
+            habitRepository.updateHabitStatus(id, status)
         }
     }
 

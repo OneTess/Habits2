@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
 import com.example.habits2.methods.autosaveProgress
+import com.example.habits2.methods.autosaveStatus
 import com.example.habits2.screens.Consts
 
 @SuppressLint("StateFlowValueCalledInComposition")
@@ -53,14 +54,17 @@ fun HabitItemView(
         // TODO: Implement proper progress indicator dependent on the Habit type
         // Checkbox
         Checkbox(
-            checked = checkedState.value, // TODO: Bind the checkedState to the actual db value.
+            checked = habitData.status,
             onCheckedChange = {
-                var progress = habitData.progress
-                checkedState.value = it
                 // TODO: Is it acceptable to do it that way? I feel like there is something off
                 //  with the way I am changing progress in the db. It works though, so I'll leave
                 //  it for the time being.
-                autosaveProgress(id = id, progress = viewModel.onHabitBinaryProgressChanged(progress), viewModel = viewModel)
+                autosaveProgress(
+                    id = id,
+                    progress = viewModel.onHabitBinaryProgressChanged(habitData.progress),
+                    viewModel = viewModel
+                )
+                autosaveStatus(id = id, habitData = habitData, viewModel = viewModel)
             }
         )
 

@@ -37,7 +37,7 @@ data class HabitData (
     val progress: Int = 0,
 
     @ColumnInfo(name = "habit_goal")
-    val goal: Int = 0,
+    val goal: Int = 1,
 
     @ColumnInfo(name = "habit_title")
     val title: String = "",

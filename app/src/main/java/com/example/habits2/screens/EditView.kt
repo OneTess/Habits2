@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavController
 import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
-import com.example.habits2.methods.autosaveProgress
 import com.example.habits2.methods.autosaveTitle
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.NavigationBarView
@@ -29,6 +28,7 @@ import com.example.habits2.uiElements.NavigationBarView
 fun EditView(
     id: Int,
     viewModel: MainViewModel = MainViewModel(),
+    habitData: HabitData,
     navController: NavController
 ) {
     val context = LocalContext.current
@@ -53,7 +53,10 @@ fun EditView(
             NavigationBarView(
                 currentScreenName = "edit",
                 onNavigationBarButtonClicked = {
-                    autosaveProgress(id = id, progress = viewModel.onHabitBinaryProgressChanged(0), viewModel = viewModel)
+                    // TODO: Combine those methods for updating progress and status into one method.
+                    viewModel.updateHabitProgress(id, 1)
+                    viewModel.updateHabitStatus(id, habitData)
+                    navController.navigate(Destinations.HOME_SCREEN)
                 }
             )
         }
