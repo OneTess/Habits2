@@ -36,7 +36,8 @@ import com.example.habits2.data.MainViewModel
 import com.example.habits2.uiElements.CalendarWeekCompactView
 import com.example.habits2.uiElements.CustomTextField
 import com.example.habits2.uiElements.HabitItemView
-import com.example.habits2.uiElements.NavigationBarView
+import com.example.habits2.uiElements.BottomBarView
+import com.example.habits2.uiElements.TopBarView
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,8 +63,8 @@ fun HomeView(
             .padding(top = Consts.paddingMedium)
             .fillMaxSize(),
         bottomBar = {
-            NavigationBarView(
-                currentScreenName = "home",
+            BottomBarView(
+                currentScreen = "home",
                 onNavigationBarButtonClicked = {
                     viewModel.clearHabitTitle()
                     if (!sheetState.isVisible) {
@@ -73,7 +74,7 @@ fun HomeView(
             )
         },
         topBar = {
-            /* TODO: HomeView topBar */
+            TopBarView(currentScreen = "home")
         }
     ) {
         paddingValues ->

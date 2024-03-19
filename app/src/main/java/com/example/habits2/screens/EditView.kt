@@ -21,7 +21,8 @@ import com.example.habits2.data.HabitData
 import com.example.habits2.data.MainViewModel
 import com.example.habits2.methods.autosaveTitle
 import com.example.habits2.uiElements.CustomTextField
-import com.example.habits2.uiElements.NavigationBarView
+import com.example.habits2.uiElements.BottomBarView
+import com.example.habits2.uiElements.TopBarView
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
@@ -45,13 +46,21 @@ fun EditView(
     }
 
     Scaffold(
-        modifier = Modifier.padding(top = Consts.paddingMedium).fillMaxSize(),
+        modifier = Modifier
+            .padding(top = Consts.paddingMedium)
+            .fillMaxSize(),
         topBar = {
-                 /* TODO: Dropdown for buttons such as "Delete" */
+            TopBarView(
+                currentScreen = "edit",
+                onBackNavClicked = { navController.navigateUp() },
+                onDeleteClick = {
+                    navController.navigateUp()
+                    viewModel.updateHabitTitle(id = id, title = "")
+                })
         },
         bottomBar = {
-            NavigationBarView(
-                currentScreenName = "edit",
+            BottomBarView(
+                currentScreen = "edit",
                 onNavigationBarButtonClicked = {
                     // TODO: Combine those methods for updating progress and status into one method.
                     viewModel.updateHabitProgress(id, 1)

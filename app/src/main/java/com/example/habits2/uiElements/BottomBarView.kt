@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
@@ -28,8 +27,8 @@ import com.example.habits2.R
 import com.example.habits2.screens.Consts
 
 @Composable
-fun NavigationBarView(
-    currentScreenName: String,
+fun BottomBarView(
+    currentScreen: String,
     onNavigationBarButtonClicked: () -> Unit,
 ) {
     NavigationBar(
@@ -50,7 +49,7 @@ fun NavigationBarView(
                 horizontalArrangement = Arrangement.End
             ) {
 
-                if (currentScreenName == "home") {
+                if (currentScreen == "home") {
                     // FAB Add
                     FloatingActionButton(
                         onClick = { onNavigationBarButtonClicked() },
@@ -70,7 +69,7 @@ fun NavigationBarView(
                     }
                 }
 
-                if (currentScreenName == "edit") {
+                if (currentScreen == "edit") {
                     // Button "Mark Completed"
                     Button(
                         onClick = { onNavigationBarButtonClicked() },
