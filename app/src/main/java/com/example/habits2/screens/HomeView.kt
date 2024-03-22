@@ -88,9 +88,11 @@ fun HomeView(
                     bottom = paddingValues.calculateBottomPadding()
                 )
         ) {
-            CalendarWeekCompactView(modifier = Modifier)
+            // TODO: Consider removing this CalendarView completely. If anything, create a separate
+            //  screen with a more orthodox calendar.
+            // CalendarWeekCompactView(modifier = Modifier)
 
-            Spacer(modifier = Modifier.padding(Consts.paddingLarge))
+            Spacer(modifier = Modifier.padding(Consts.paddingMedium))
 
             val habitsList = viewModel.getAllHabits.collectAsState(initial = listOf())
             LazyColumn(

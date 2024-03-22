@@ -19,9 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.habits2.methods.getCurrentDate
-import com.example.habits2.methods.getFormattedDate
-import com.example.habits2.methods.getPastOrFutureDate
+import com.example.habits2.methods.CalendarMethods
 import com.example.habits2.screens.Consts
 import java.util.Date
 import java.util.Locale
@@ -31,10 +29,12 @@ fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
     // TODO: Customizable colors to accentuate the current day and only leave outlines of other days
     // TODO: More subtle coloring of Calendar Cells
 
-    val currentDate = getPastOrFutureDate(daysOffset)
+    val calendarMethods = CalendarMethods()
 
-    val formattedDateDay = getFormattedDate(currentDate, "dd") // Format as day only
-    val formattedDateMonth = getFormattedDate(currentDate, "MMM") // Format as first three characters of the month name
+    val currentDate = calendarMethods.getPastOrFutureDate(daysOffset)
+
+    val formattedDateDay = calendarMethods.getFormattedDate(currentDate, "dd") // Format as day only
+    val formattedDateMonth = calendarMethods.getFormattedDate(currentDate, "MMM") // Format as first three characters of the month name
 
     Box(modifier = Modifier
         .padding(PaddingValues(Consts.paddingSmall))
@@ -64,7 +64,7 @@ fun CalendarDayCellView(onClick: () -> Unit, daysOffset: Int) {
             }
         }
     }
-    getCurrentDate()
+    calendarMethods.getCurrentDate()
 }
 
 @Preview(showBackground = true)

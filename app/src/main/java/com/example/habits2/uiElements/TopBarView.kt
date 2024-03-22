@@ -27,7 +27,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.habits2.methods.CalendarMethods
 import com.example.habits2.screens.Consts
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,8 +39,14 @@ fun TopBarView(
     onBackNavClicked: () -> Unit = { },
     onDeleteClick: () -> Unit = { }
 ) {
+    val calendarMethods = CalendarMethods()
+
+    val currentDate = calendarMethods.getPastOrFutureDate(daysOffset = 0)
+    val formattedDateDay = calendarMethods.getFormattedDate(currentDate, "dd") // Format as day only
+    val formattedDateMonth = calendarMethods.getFormattedDate(currentDate, "MMM") // Format as first three characters of the month name
+
     val navigationButtonComposable : (@Composable () -> Unit) = {
-        if (!currentScreen.contains("home")){
+        if (!currentScreen.contains("home")) {
             IconButton(onClick = { onBackNavClicked() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -52,7 +60,11 @@ fun TopBarView(
     }
 
     TopAppBar(
-        title = { Text(text = "Testing Title") },
+        title = { Text(
+            text = "Fri, $formattedDateMonth $formattedDateDay", // TODO: Day of the week at the beginning
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = Consts.paddingMedium)
+        ) },
         colors = TopAppBarDefaults.topAppBarColors(),
         modifier = Modifier
             .fillMaxWidth()
